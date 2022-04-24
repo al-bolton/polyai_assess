@@ -8,7 +8,7 @@ function ManufDatePicker({ setDateSelector, manufDate, setManufDate }) {
   return (
     <FormControl>
       <FormLabel>Date of Manufacture</FormLabel>
-      <Select onChange={e => setDateSelector(e)}>
+      <Select onChange={e => setDateSelector(e.target.value)}>
         <option value="aft">After</option>
         <option value="bef">Before</option>
         <option value="on">On</option>
