@@ -29,12 +29,6 @@ function SpaceshipForm() {
 
   const [pulseLaser, setPulseLaser] = useState(false);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // Build the query string
-    buildQueryString();
-  };
-
   const buildQueryString = () => {
     let query = '?';
 
@@ -66,7 +60,7 @@ function SpaceshipForm() {
   return (
     <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start">
       <VStack spacing={3} alignItems="flex-start">
-        <Heading size="2xl">Set your spaceship details</Heading>
+        <Heading size="2xl">Set your spaceship details Mr Z</Heading>
         <Text>
           Choose options from the different filters to build your query string
         </Text>
