@@ -23,7 +23,7 @@ function ColorPicker({ setColorSelector, setSelectedColors }) {
   return (
     <FormControl>
       <FormLabel>Colours</FormLabel>
-      <Select onChange={e => setColorSelector(e)}>
+      <Select onChange={e => setColorSelector(e.target.value)}>
         <option value="all">All of</option>
         <option value="any">Any of</option>
         <option value="none">None of</option>
