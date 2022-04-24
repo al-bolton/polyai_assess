@@ -22,8 +22,8 @@ function App() {
             <Flex h="90vh" py={5}>
               <SpaceshipForm />
               <Image
-                h="full"
-                objectFit="full"
+                w="full"
+                objectFit="scale-down"
                 src="spaceship.jpg"
                 alt="Spaceship image"
               ></Image>

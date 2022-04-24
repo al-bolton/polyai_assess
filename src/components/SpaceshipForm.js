@@ -5,14 +5,14 @@ import {
   Text,
   SimpleGrid,
   GridItem,
-  FormControl,
-  FormLabel,
-  Input,
   Button,
 } from '@chakra-ui/react';
+import moment from 'moment';
+
 
 import ColorPicker from './ColorPicker';
 import SpeedPicker from './SpeedPicker';
+import ManufDatePicker from './ManufDatePicker';
 import LaserPicker from './LaserPicker';
 
 function SpaceshipForm() {
@@ -22,7 +22,10 @@ function SpaceshipForm() {
   const [selectedColors, setSelectedColors] = useState([]);
 
   const [speedSelector, setSpeedSelector] = useState('gr');
-  const [selectedMaxSpeed, setSelectedMaxSpeed] = useState("");
+  const [selectedMaxSpeed, setSelectedMaxSpeed] = useState('');
+
+  const [dateSelector, setDateSelector] = useState('aft');
+  const [manufDate, setManufDate] = useState('');
 
   const [pulseLaser, setPulseLaser] = useState(false);
 
@@ -42,14 +45,20 @@ function SpaceshipForm() {
     }
 
     // Max Speed
-    if (selectedMaxSpeed !== "") {
-      if (query.length > 1) query += "&";
-      query += "speed=" + speedSelector + selectedMaxSpeed;
+    if (selectedMaxSpeed !== '') {
+      if (query.length > 1) query += '&';
+      query += 'speed=' + speedSelector + selectedMaxSpeed;
+    }
+
+    // Date of Manufacture
+    if (manufDate !== '') {
+      if (query.length > 1) query += '&';
+      query += 'date=' + dateSelector + moment(manufDate).format('DD-MM-YYYY');
     }
 
     // Pulse laser
     if (query.length > 1) query += '&';
-    query += "laser=" + pulseLaser;
+    query += 'laser=' + pulseLaser;
 
     setQueryString(query);
   };
@@ -77,10 +86,11 @@ function SpaceshipForm() {
           />
         </GridItem>
         <GridItem colSpan={2}>
-          <FormControl>
-            <FormLabel>Date of Manufacture</FormLabel>
-            <Input placeholder="Blvd. Broken Dream 21" />
-          </FormControl>
+          <ManufDatePicker
+            setDateSelector={setDateSelector}
+            manufDate={manufDate}
+            setManufDate={setManufDate}
+          />
         </GridItem>
         <GridItem colSpan={2}>
           <LaserPicker setPulseLaser={setPulseLaser} />
